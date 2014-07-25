@@ -22,7 +22,6 @@ body{
     font-smooth: always;
     -webkit-font-smoothing: subpixel-antialiased;
 }
-
 header{
     background: #000;
     border-bottom: 2px solid #d9e0e2;
