@@ -19,7 +19,7 @@
 
     <body>
         <header>
-            <h1>TEDTalks (video)</h1>           
+            <h1><a href='http://www.ted.com/talks/list' target='_blank'> TEDTalks (video)</a></h1>           
         </header>
 
         <div id="feed" class="container">
@@ -46,7 +46,7 @@
                 feedpointer.load(displayfeed);
             }
 
-            function displayfeed(result) {               
+            function displayfeed(result) {            console.log(result);   
                 if (!result.error) {
                     var thefeeds = result.feed.entries; //get feeds
                     for (var i = 0; i < thefeeds.length; i++) {
@@ -56,8 +56,8 @@
                         sidebaroutput += "<div class='row-fluid' id ='feed_" + i + "'><div class='thumbnail'><img src ='" + thefeeds[i].mediaGroups[0].contents[0].thumbnails[0].url + "'></div>" +
                                          "<div class='sidebody'><p class='title'>" + thefeeds[i].title + "</p><p class='date'>on " + thefeeds[i].publishedDate + "</p></div></div>";
 
-                        contentoutput += "<div class='span8 clearfix' id='content_" + i + "'><h1 class='content-title'>" + thefeeds[i].title + "</h1><p class='article-body'>" + StrippedString +
-                                         "<a href='" + thefeeds[i].link + "' target='_blank'>[Read more]</a>" + "<a class='media' target='_blank' href='http://feedproxy.google.com/~r/TEDTalks_video/~5/SnYLUtY8rPg/ZeFrank_2014.mp4'>Play Now</a></p><div class='article-image'><img src ='" + thefeeds[i].mediaGroups[0].contents[0].thumbnails[0].url + "' /></div></div>";
+                        contentoutput += "<div class='span8 clearfix' id='content_" + i + "'><h1 class='content-title'><a href='" + thefeeds[i].link + "' target='_blank'>" + thefeeds[i].title + "</a></h1><p class='article-body'>" + StrippedString +
+                                         "<a href='" + thefeeds[i].link + "' target='_blank'>[Read more]</a>" + "<a class='media' target='_blank' href='"+thefeeds[i].mediaGroups[0].contents[0].url+"'>Play Now</a></p><div class='article-image'><img src ='" + thefeeds[i].mediaGroups[0].contents[0].thumbnails[0].url + "' /></div></div>";
                     }
                     sidebar.innerHTML = sidebaroutput
                     content.innerHTML = contentoutput
