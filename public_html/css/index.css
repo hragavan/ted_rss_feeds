@@ -1,0 +1,171 @@
+/* 
+    Document   : index
+    Created on : Jul 25, 2014, 12:14:25 AM
+    Author     : hragavan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+*{
+    box-sizing: border-box;
+}
+body{
+    background: #f8f9fa;
+    font-family: 'Source Sans Pro',sans-serif;
+    font-style: normal;
+    line-height: 1.8;
+    font-weight: 400;
+    font-size: 1em;
+    color: #4e5860;
+    background: #f8f9fa;
+    background-size: cover;
+    font-smooth: always;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+header{
+    background: #000;
+    text-align: center;
+    border-bottom: 2px solid #d9e0e2;
+    font-size: 14px !important;
+    line-height: 1.5em !important;
+    height: 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 60px !important;
+    z-index:999999;
+}
+header h1{
+    color:#fff;
+}
+.container{
+    margin:0;
+    width:100%;
+}
+#sidebar{
+    width: 425px;
+    float:left;
+    background: #fff;
+    border-right: 1px solid #d9e0e2;
+    position:fixed;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    top:60px;
+}
+#sidebar .date{
+    font-size:10px;
+}
+/* sidebar scroll css */
+#sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+#sidebar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+#sidebar::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #ff3c1f; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+#sidebar::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255,0,0,0.4); 
+}
+#maincontent{
+    position:absolute;
+    max-width: 1280px;
+    margin-left: 425px;
+    padding-top: 1.5em;
+    margin-top: 30px;
+    height:auto;
+}
+#maincontent img{
+    width:100%;
+}
+#maincontent .article-content{
+    position: relative;
+}
+.thumbnail{
+    overflow: hidden;
+    float: left;
+    margin-right: .625em;
+    height: 50px;
+    width: 60px;
+    top: 2px;
+    position: relative;
+    border:0;
+}
+.sidebody{
+    overflow: hidden;
+    zoom: 1;
+}
+.sidebody .title{
+    font-size:15px;
+}
+.row-fluid{
+    border-top: 1px solid rgba(217,224,226,0.4);
+    border-bottom: 1px solid #e8e8e8;
+    margin-left: 0px;
+    cursor: pointer;
+    width:100%;
+}
+.span12{
+    padding: 2px 2px 2px 2px;
+}
+#feed .span8{
+    display: none;
+    background: #fff;
+    min-height: 700px;
+    border: 1px solid #d9e0e2;
+    margin:0;
+    width:100%;
+}
+.article-body {
+    font-family: "FF Tisa",Georgia,serif;
+    margin: 0 auto;
+    line-height: 1.8em;
+    padding: 2.25em 4.9em;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+}
+.article-body p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    color: #4e5860;
+}
+.article-content img{
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1.content-title {
+    position: relative;
+    font-weight:bold;
+    color:#3b5998;
+    letter-spacing: 0;
+    font-size: 1.8em;
+    text-align: left;
+    margin-bottom: .8em;
+    padding: .8em 2.7em 0 2.7em;
+    line-height: 1.2em;
+    -webkit-font-smoothing: antialiased;
+}
+.article-more {
+    padding: 2.325em 1.875em;
+    border-bottom: 1px solid #eceff0;
+    overflow: hidden;
+}
+.clearfix{
+    display: block;
+}
+a.media {
+    padding-top: 6px;
+    padding-left: 20px;
+    display:block;
+    background: url("../img/playnow.gif") no-repeat left center;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'> 
+        <meta name="description" content="Tedtalks feeds">
+        <meta name="keywords" content="Tedtalks, rssfeeds, tedvideos">
+        <title>TEDTalks (video) - powered by FeedBurner</title>
+        <link rel='stylesheet' href='css/bootstrap.css'  type='text/css'/>
+        <link rel='stylesheet' href='css/index.css'  type='text/css'/>
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript" src='js/jquery-1.10.2.js'></script>
+        <script type="text/javascript" src='js/jquery-1.10.2.min.js'></script>
+        <script type="text/javascript" src='js/jquery-1.11.1.js'></script>
+        <script type="text/javascript" src='js/jquery-1.11.1.min.js'></script>
+        <script type="text/javascript">
+            google.load("feeds", "1");
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h1>TEDTalks (video)</h1>           
+        </header>
+
+        <div id="feed" class="container">
+            <div id ="sidebar"></div>
+            <div id="maincontent"></div>
+        </div>
+        
+        <script type="text/javascript">
+            //page container elements
+            var feedcontainer = document.getElementById("feed");
+            var sidebar = document.getElementById("sidebar");
+            var content = document.getElementById("maincontent");
+           
+            var feedurl = "http://feeds.feedburner.com/tedtalks_video";
+            var feedlimit = 100;
+            //content variables
+            var sidebaroutput = "";
+            var contentoutput = "";
+            var rssoutput = "";
+            
+            function rssfeedsetup() {
+                var feedpointer = new google.feeds.Feed(feedurl); //set url
+                feedpointer.setNumEntries(feedlimit); // set feed limit
+                feedpointer.load(displayfeed);
+            }
+
+            function displayfeed(result) {               
+                if (!result.error) {
+                    var thefeeds = result.feed.entries; //get feeds
+                    for (var i = 0; i < thefeeds.length; i++) {
+                        var feedContent = thefeeds[i].content;
+                        var StrippedString = feedContent.replace(/(<([^>]+)>)/ig, "");
+                      
+                        sidebaroutput += "<div class='row-fluid' id ='feed_" + i + "'><div class='thumbnail'><img src ='" + thefeeds[i].mediaGroups[0].contents[0].thumbnails[0].url + "'></div>" +
+                                         "<div class='sidebody'><p class='title'>" + thefeeds[i].title + "</p><p class='date'>on " + thefeeds[i].publishedDate + "</p></div></div>";
+
+                        contentoutput += "<div class='span8 clearfix' id='content_" + i + "'><h1 class='content-title'>" + thefeeds[i].title + "</h1><p class='article-body'>" + StrippedString +
+                                         "<a href='" + thefeeds[i].link + "' target='_blank'>[Read more]</a>" + "<a class='media' target='_blank' href='http://feedproxy.google.com/~r/TEDTalks_video/~5/SnYLUtY8rPg/ZeFrank_2014.mp4'>Play Now</a></p><div class='article-image'><img src ='" + thefeeds[i].mediaGroups[0].contents[0].thumbnails[0].url + "' /></div></div>";
+                    }
+                    sidebar.innerHTML = sidebaroutput
+                    content.innerHTML = contentoutput
+                }
+                else
+                    alert("Error fetching feeds!")
+                setupinitial();
+            }
+            //initial page load handler function
+            function setupinitial()
+            {               
+                $('#feed #sidebar div:eq(0)').css("background-color", "#e8e8e8");
+                $('#feed #sidebar div:eq(0)').find('.title').css("color", "#000");
+                $('#feed #sidebar div:eq(0)').css("border-bottom", "1px solid #3b5998");
+                $('#feed #maincontent div:eq(0)').show();
+            }
+            
+            window.onload = function() {               
+                rssfeedsetup();
+            }
+                       
+            $(document).ready(function() {
+                $(document).on("click", "#feed .row-fluid", function() {
+                    $('#feed .row-fluid').css("background-color", "#fff");
+                    $('#feed .row-fluid').find('.title').css("color", "#4e5860");
+                    $('#feed .row-fluid').css("border-bottom", "1px solid #e8e8e8");
+                    $(this).css("background-color", "#e8e8e8");
+                    $(this).find('.title').css("color", "#000");
+                    $(this).css("border-bottom", "1px solid #3b5998");
+
+                    var id = $(this).attr("id").split('_');
+                    var contentID = id[1];
+                    if (false === $('#content_' + contentID).is(':visible')) {
+                        $('#feed .span8').hide();
+                    }
+                    $('#content_' + contentID).show();
+                    window.scrollTo(0, 0);
+                });
+            });
+        </script>
+        
+        <script src='js/bootstrap.js'></script>      
+    </body>
+</html>
