@@ -35,13 +35,8 @@ header{
     height: 60px !important;
     z-index:999999;
 }
-header h1 a{
-    color:#fff;
-    text-decoration: none;
-}
-header h1 a:hover{
-    color:#fff;
-    text-decoration: none;
+header h1{
+    color:#fff; 
 }
 .container{
     margin:0;
