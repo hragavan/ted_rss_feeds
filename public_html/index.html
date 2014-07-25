@@ -46,7 +46,7 @@
                 feedpointer.load(displayfeed);
             }
 
-            function displayfeed(result) {            console.log(result);   
+            function displayfeed(result) {
                 if (!result.error) {
                     var thefeeds = result.feed.entries; //get feeds
                     for (var i = 0; i < thefeeds.length; i++) {
