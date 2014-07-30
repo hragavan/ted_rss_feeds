@@ -45,7 +45,7 @@
                 feedpointer.setNumEntries(feedlimit); // set feed limit
                 feedpointer.load(displayfeed);
             }
-
+            //loop through feeds and construct html
             function displayfeed(result) {
                 if (!result.error) {
                     var thefeeds = result.feed.entries; //get feeds
@@ -77,7 +77,7 @@
             
             window.onload = function() {               
                 rssfeedsetup();
-            }
+            };
                        
             $(document).ready(function() {
                 $(document).on("click", "#feed .row-fluid", function() {
